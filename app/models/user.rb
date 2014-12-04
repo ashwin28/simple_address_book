@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
       parsed_contacts << temp if (temp['first_name'].present? &&
                                   temp['first_name'].length > 1 &&
                                   temp['last_name'].length > 1)
-    end
+    end unless contacts['feed']['entry'].nil?
 
     parsed_contacts
   end
