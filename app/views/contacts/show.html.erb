@@ -1,0 +1,21 @@
+<% provide(:title, 'View Contact') %>
+
+<h1>View Contact</h1>
+
+<%= div_for @contact do %>
+  <h3>
+    <%= @contact.first_name %> <%= @contact.last_name %>
+    <span class="right" id='contact-options'>
+      <%= link_to 'Edit', edit_user_contact_path(@user, @contact) %>
+      <%= link_to 'Delete', [@user, @contact], data: { confirm: 'Are you sure?' },
+                  method: :delete %>
+    </span>
+  </h3>
+  <p><span><strong>Email:</strong> <%= @contact.email %></span> <span><strong>Phone:</strong> <%= @contact.phone %></span></p>
+  <p><span><strong>Street:</strong> <%= @contact.street %></span> <span><strong>City:</strong> <%= @contact.city %></span></p>
+  <p><span><strong>State:</strong> <%= @contact.state %></span> <span><strong>Zip:</strong> <%= @contact.zip %></span> <span><strong>Country:</strong> <%= @contact.country %></span></p>
+<% end %>
+
+<div class="back-link">
+  <%= link_to 'Back', user_path(@user) %>
+</div>

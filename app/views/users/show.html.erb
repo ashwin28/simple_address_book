@@ -1,0 +1,13 @@
+<% provide(:title, 'Contact List') %>
+
+<h1>Welcome <%= @user.name %></h1>
+
+<h2>You currently have <%= pluralize(@user.contacts.count, "contact") %>:</h2>
+
+<div id="contacts">
+  <%= render @user.contacts %>
+</div>
+
+<div id="new-contact-link">
+  <%= link_to "Add New Contact", new_user_contact_path(@user)%>
+</div>
