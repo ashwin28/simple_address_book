@@ -151,6 +151,9 @@ div.field, div.form-options { overflow: auto; margin-bottom: 10px; }
       display: inline-block;
       min-width: 200px;
     }
+    span#email {
+      min-width: 400px;
+    }
   }
 }
 

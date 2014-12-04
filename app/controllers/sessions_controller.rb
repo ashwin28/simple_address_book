@@ -11,6 +11,12 @@ class SessionsController < ApplicationController
     if user = User.authenticate(params[:username], params[:password])
       log_in(user)
       redirect_to root_path, notice: "You successfully logged in."
+    elsif env["omniauth.auth"].present? && user = User.from_omniauth(env["omniauth.auth"])
+      log_in(user)
+      # load up to 50 contacts from google
+      imported_contacts = User.get_google_contacts(user)
+      User.add_google_contacts(user, imported_contacts)
+      redirect_to root_path, notice: "You successfully logged in and imported up to 50 contacts from google."
     else
       redirect_to login_path, alert: "Invalid login/password combination."
     end

@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
 
+  # handles user permissions decline error on google oauth
+  def omniauth_callback_failure
+    redirect_to root_path
+  end
+
   protected
     # Returns the logged in user or nil if there isn't one
     def current_user

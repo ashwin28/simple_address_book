@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: "users#new"
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+
   resources :users, except: [:index, :destroy] do
     resources :contacts, except: [:index]
   end

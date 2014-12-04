@@ -29,6 +29,10 @@ RSpec.describe "UserPages", type: :request do
       should have_link('Edit Profile', href: edit_user_path(User.first))
       should have_link('Logout', href: logout_path)
 
+      should_not have_link('Google+', href: '/auth/google_oauth2')
+      should_not have_link('Sign Up', href: new_user_path)
+      should_not have_link('Login', href: login_path)
+
       # check adding a new contact
       expect { 
         click_link 'Add New Contact'
@@ -128,6 +132,7 @@ RSpec.describe "UserPages", type: :request do
       should have_selector('div#flash-div', text: "You successfully logged out.")
       should_not have_link('Edit Profile', href: edit_user_path(User.first))
       should_not have_link('Logout', href: logout_path)
+      should have_link('Google+', href: '/auth/google_oauth2')
       should have_link('Sign Up', href: new_user_path)
       should have_link('Login', href: login_path)
 

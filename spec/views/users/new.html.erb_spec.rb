@@ -17,6 +17,7 @@ RSpec.describe "users/new.html.erb", type: :view do
 
       # header links for guest
       should have_link('Simple Address Book', href: root_path)
+      should have_link('Google+', href: '/auth/google_oauth2')
       should have_link('Sign Up', href: new_user_path)
       should have_link('Login', href: login_path)
     end
