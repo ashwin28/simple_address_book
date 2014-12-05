@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 
       temp.merge!('first_name' => f_name || "")
       temp.merge!('last_name' => l_name || "")
-      temp.merge!('email' => email || "")
+      temp.merge!('email' => email.try(:downcase) || "")
       temp.merge!('phone' => phone || "")
       temp.merge!('structured_postal_address' => address || "")
 
